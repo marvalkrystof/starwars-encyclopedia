@@ -1,18 +1,16 @@
 
-
-export interface ApiResponse {
-    count: number;
-    next: string | null; 
-    previous: string | null; 
-    results: Person[]
-  }
-
-
-
 export interface IndividualBase {
   created: string; 
   edited: string; 
   url: string; 
+}
+
+
+export interface ApiResponse<T extends IndividualBase> {
+  count: number;
+  next: string | null; 
+  previous: string | null; 
+  results: T[]
 }
 
 export interface Person extends IndividualBase {
@@ -58,4 +56,8 @@ export interface Planet extends IndividualBase {
   starships: string[];   
   vehicles: string[];    
   species: string[];              
+}
+
+export interface FetchDataComponent {
+  fetchData: boolean;
 }

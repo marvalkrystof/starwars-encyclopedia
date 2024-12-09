@@ -1,25 +1,18 @@
 import { Box, Typography } from "@mui/material";
-import DataList from "../components/DataList";
+import DataListPeople from "../components/DataListPerson";
 
-interface Props {
-
-}
-
-
-const People = (props : Props) => {
-    return (
+const People = () => {
+  return (
     <>
-    <Box>
-        <Typography variant="h6" component="p">This page lists data about people from Star Wars.</Typography>
-    </Box>
-    
-    
-    <DataList></DataList>
+      <Box>
+        <Typography variant="h6" component="p">
+          This page lists data about people from Star Wars.
+        </Typography>
+      </Box>
 
+      <DataListPeople></DataListPeople>
     </>
-);
-  }
-
-
+  );
+};
 
 export default People;
