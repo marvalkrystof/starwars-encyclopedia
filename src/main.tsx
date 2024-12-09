@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import theme from "./theme/Theme";
+import theme from "./theme/theme";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
