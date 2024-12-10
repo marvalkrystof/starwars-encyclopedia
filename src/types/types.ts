@@ -1,4 +1,3 @@
-
 export interface IndividualBase {
   created: string; 
   edited: string; 
@@ -44,7 +43,7 @@ export interface Planet extends IndividualBase {
   films: string[]; 
  }
 
- export interface Films extends IndividualBase{
+ export interface Film extends IndividualBase{
   title: string;
   episode_id: number;
   opening_crawl: string;
@@ -58,6 +57,50 @@ export interface Planet extends IndividualBase {
   species: string[];              
 }
 
-export interface FetchDataComponent {
-  fetchData: boolean;
+export interface Starship extends IndividualBase {
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string; 
+  length: string; 
+  max_atmosphering_speed: string;
+  crew: string;
+  passengers: string;
+  cargo_capacity: string;
+  consumables: string;
+  hyperdrive_rating: string;
+  starship_class: string;
+  pilots: string[];
+  films: string[]; 
+}
+
+export interface Species extends IndividualBase {
+  name: string;
+  classification: string;
+  designation: string;
+  average_height: string;
+  skin_colors: string;
+  hair_colors: string;
+  eye_colors: string;
+  average_lifespan: string;
+  homeworld: string | null;
+  language: string;
+  people: string[];
+  films: string[];
+}
+
+export interface Vehicle extends IndividualBase {
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string;
+  length: string;
+  max_atmosphering_speed: string;
+  crew: string;
+  passengers: string;
+  cargo_capacity: string;
+  consumables: string;
+  vehicle_class: string;
+  pilots: string[];
+  films: string[];
 }

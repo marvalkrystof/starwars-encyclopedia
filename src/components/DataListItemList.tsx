@@ -44,6 +44,9 @@ const DataListItemList = <T extends IndividualBase>({
           {error && (
             <DataListItemAttribute label="Error occurred while fetching data." />
           )}
+          {data?.length === 0 && !loading && !error && (
+            <DataListItemAttribute label={`No ${label.toLowerCase()} found.`} />
+          )}
           {data?.map((item) => (item ? renderItem(item) : null))}
         </List>
       </Collapse>

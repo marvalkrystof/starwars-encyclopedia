@@ -1,6 +1,5 @@
-import React, { ReactNode, useState } from "react";
-import { Collapse, List, ListItemButton, ListItemText } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import React, { useState } from "react";
+import { Card, CardContent, List, Typography } from "@mui/material";
 
 interface Props {
   label: string;
@@ -8,29 +7,55 @@ interface Props {
 }
 
 const DataListItemBase: React.FC<Props> = ({ label, children }: Props) => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const [fetchData, setFetchData] = useState<boolean>(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
-  const handleClick = () => {
-    setOpen(!open);
-    if (!fetchData) {
-      setFetchData(true); // Start the fetch when uncollapsed for the first time. This is to prevent fetching unnecessary data.
-    }
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
-    <>
-      <ListItemButton onClick={handleClick}>
-        <ListItemText primary={label} />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          {children}
-        </List>
-      </Collapse>
-    </>
+    <Card
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      sx={{
+        position: "relative",
+        overflow: "scroll",
+        overflowY: isHovered ? "visible" : "hidden",
+        overflowX: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "30vh",
+        ":hover": {
+          boxShadow: 20,
+        },
+      }}
+    >
+      <CardContent>
+        <Typography variant="h3">{label}</Typography>
+      </CardContent>
+      <List
+        component="div"
+        disablePadding
+        sx={{
+          position: "absolute",
+          top: "0",
+          left: 0,
+          height: "auto",
+          width: "100%",
+          backgroundColor: "white",
+          boxShadow: 20,
+          display: isHovered ? "block" : "none",
+          zIndex: 1,
+        }}
+      >
+        {children}
+      </List>
+    </Card>
   );
 };
 
