@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import DataListPeople from "../components/DataListPerson";
+import DataPagePeople from "../components/DataPagePeople";
 
 const People = () => {
-  return <DataListPeople></DataListPeople>;
+  return <DataPagePeople></DataPagePeople>;
 };
 
 export default People;

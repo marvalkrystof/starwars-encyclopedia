@@ -6,7 +6,7 @@ interface Props {
   children: JSX.Element[];
 }
 
-const DataListItemBase: React.FC<Props> = ({ label, children }: Props) => {
+const DataCard: React.FC<Props> = ({ label, children }: Props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleMouseEnter = () => {
@@ -30,6 +30,7 @@ const DataListItemBase: React.FC<Props> = ({ label, children }: Props) => {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "30vh",
+        aspectRatio: "1 / 1",
         ":hover": {
           boxShadow: 20,
         },
@@ -59,4 +60,4 @@ const DataListItemBase: React.FC<Props> = ({ label, children }: Props) => {
   );
 };
 
-export default DataListItemBase;
+export default DataCard;

@@ -1,6 +1,6 @@
 import { IndividualBase } from "../types/types";
 import { useFetch } from "../hooks/UseFetch";
-import DataListItemAttribute from "./DataListItemAttribute";
+import ItemAttribute from "./ItemAttribute";
 import { getEndpointFromUrl } from "../utils/apiUtils";
 
 interface Props<T> {
@@ -9,7 +9,7 @@ interface Props<T> {
   renderItemAttribute: (item: T, label: string) => JSX.Element;
 }
 
-const DataListItem = <T extends IndividualBase>({
+const Item = <T extends IndividualBase>({
   dataUrl,
   label,
   renderItemAttribute,
@@ -20,11 +20,11 @@ const DataListItem = <T extends IndividualBase>({
 
   return (
     <>
-      {loading && <DataListItemAttribute label={label} data="Loading..." />}
-      {error && <DataListItemAttribute label={label + " error loading"} />}
+      {loading && <ItemAttribute label={label} data="Loading..." />}
+      {error && <ItemAttribute data={label + " error loading"} />}
       {data && renderItemAttribute(data, label)}
     </>
   );
 };
 
-export default DataListItem;
+export default Item;

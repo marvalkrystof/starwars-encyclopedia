@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { useFetchMultiple } from "../hooks/UseFetch";
-import { Collapse, List, ListItemButton, ListItemText } from "@mui/material";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import DataListItemAttribute from "./DataListItemAttribute";
+import {
+  Collapse,
+  Icon,
+  List,
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { ExpandLess, ExpandMore, SvgIconComponent } from "@mui/icons-material";
+import ItemAttribute from "./ItemAttribute";
 import { IndividualBase } from "../types/types";
 import { getEndpointFromUrl } from "../utils/apiUtils";
 
 type Props<T> = {
   dataUrls: string[];
   label: string;
+  icon?: SvgIconComponent;
   renderItem: (item: T) => JSX.Element; // Function to render each item (like Person, Planet, etc.)
 };
 
-const DataListItemList = <T extends IndividualBase>({
+const ItemList = <T extends IndividualBase>({
   dataUrls,
   label,
+  icon,
   renderItem,
 }: Props<T>) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -35,17 +44,18 @@ const DataListItemList = <T extends IndividualBase>({
   return (
     <>
       <ListItemButton onClick={handleClick}>
-        <ListItemText primary={label} />
+        {icon && <Icon component={icon} fontSize="medium" />}
+        <Typography sx={{ fontWeight: 900, fontSize: 20 }}>{label}</Typography>
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          {loading && <DataListItemAttribute label="Loading..." />}
+          {loading && <ItemAttribute data="Loading..." />}
           {error && (
-            <DataListItemAttribute label="Error occurred while fetching data." />
+            <ItemAttribute data="Error occurred while fetching data." />
           )}
           {data?.length === 0 && !loading && !error && (
-            <DataListItemAttribute label={`No ${label.toLowerCase()} found.`} />
+            <ItemAttribute data={`No ${label.toLowerCase()} found.`} />
           )}
           {data?.map((item) => (item ? renderItem(item) : null))}
         </List>
@@ -54,4 +64,4 @@ const DataListItemList = <T extends IndividualBase>({
   );
 };
 
-export default DataListItemList;
+export default ItemList;

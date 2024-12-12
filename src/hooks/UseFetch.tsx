@@ -25,6 +25,7 @@ export const useFetch = <T,>({
       return response.data;
     },
     enabled,
+    retry: 1,
   });
 
   return {
@@ -59,6 +60,7 @@ export const useFetchMultiple = <T,>({
         return response.data as T;
       },
       enabled,
+      retry: 1,
     })),
   });
 

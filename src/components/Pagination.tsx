@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -8,6 +8,7 @@ interface Props {
   isNextDisabled: boolean;
   handleNextPage: () => void;
   handlePrevPage: () => void;
+  page: number;
 }
 
 function Pagination({
@@ -15,6 +16,7 @@ function Pagination({
   handlePrevPage,
   isNextDisabled,
   isPrevDisabled,
+  page,
 }: Props) {
   return (
     <Box
@@ -32,6 +34,7 @@ function Pagination({
       >
         Previous
       </Button>
+      <Typography variant="h6">{page}</Typography>
       <Button
         variant="outlined"
         endIcon={<ArrowForwardIcon />}
