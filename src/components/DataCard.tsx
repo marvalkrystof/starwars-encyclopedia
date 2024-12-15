@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Card, CardContent, List, Typography } from "@mui/material";
-
+import { Card, CardContent, List, Typography, useTheme } from "@mui/material";
+import { useThemeContext } from "../providers/ThemeContextProvider";
 interface Props {
   label: string;
   children: JSX.Element[];
@@ -16,6 +16,7 @@ const DataCard: React.FC<Props> = ({ label, children }: Props) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  const { theme } = useThemeContext();
 
   return (
     <Card
@@ -30,9 +31,9 @@ const DataCard: React.FC<Props> = ({ label, children }: Props) => {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "30vh",
-        aspectRatio: "1 / 1",
+        borderRadius: 3,
         ":hover": {
-          boxShadow: 20,
+          boxShadow: `0px 7px 17px ${theme.palette.primary.main}`,
         },
       }}
     >
@@ -48,7 +49,7 @@ const DataCard: React.FC<Props> = ({ label, children }: Props) => {
           left: 0,
           height: "auto",
           width: "100%",
-          backgroundColor: "white",
+          backgroundColor: "background.paper",
           boxShadow: 20,
           display: isHovered ? "block" : "none",
           zIndex: 1,

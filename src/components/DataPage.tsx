@@ -1,11 +1,10 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { useFetch } from "../hooks/UseFetch";
 import { ApiResponse, IndividualBase } from "../types/types";
 import ItemAttribute from "./ItemAttribute";
 import Pagination from "./Pagination";
 import { useState } from "react";
 import { getEndpointFromUrl } from "../utils/apiUtils";
-import Loading from "./Loading";
 import Searchbar from "./Searchbar";
 
 interface Props<T> {
@@ -45,50 +44,86 @@ const DataPage = <T extends IndividualBase>({
       setPage(page - 1);
     }
   };
-  console.log(data?.results);
   return (
-    <>
-      <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        marginTop: 1,
+        padding: 2,
+        minHeight: "90vh",
+        rowGap: 5,
+      }}
+    >
+      <Box sx={{ width: "20%", minWidth: 400 }}>
         <Searchbar onChange={handleSearchChange}></Searchbar>
-        <Box
-          sx={{
-            paddingTop: 2,
-            paddingLeft: 3,
-            paddingRight: 3,
-            display: "grid",
-            columnGap: 3,
-            rowGap: 1,
-            width: "100%",
-            height: "80vh",
-            bgcolor: "background.default",
-            gridTemplateColumns: {
-              sm: "repeat(1, 1fr)",
-              md: "repeat(3, 1fr)",
-              lg: "repeat(5, 1fr)",
-            },
-          }}
-          component="div"
-        >
-          {loading && <Loading />}
-          {error && (
-            <ItemAttribute data="Error occurred while fetching data." />
-          )}
-          {Array.isArray(data?.results) && data?.results.length === 0 ? (
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100%",
-                width: "100vw",
-              }}
-            >
-              <Typography variant="h6">No data found</Typography>
-            </Box>
-          ) : (
-            data?.results.map((item) => (item ? renderItem(item) : null))
-          )}
-        </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "grid",
+          columnGap: 3,
+          rowGap: 1,
+          minHeight: "70vh",
+          width: "100%",
+          bgcolor: "background.default",
+          gridTemplateColumns: {
+            sm: "repeat(1, 1fr)",
+            md: "repeat(3, 1fr)",
+            lg: "repeat(5, 1fr)",
+          },
+        }}
+        component="div"
+      >
+        {loading && (
+          <Box
+            sx={{
+              gridColumn: "1/-1",
+              gridRow: "1/-1",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        )}
+        {error && (
+          <Box
+            sx={{
+              gridColumn: "1/-1",
+              gridRow: "1/-1",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h3">
+              Error occurred while fetching data.
+            </Typography>
+          </Box>
+        )}
+        {Array.isArray(data?.results) && data?.results.length === 0 ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+              width: "100vw",
+            }}
+          >
+            <Typography variant="h6">No data found</Typography>
+          </Box>
+        ) : (
+          data?.results.map((item) => (item ? renderItem(item) : null))
+        )}
+      </Box>
+      <Box sx={{ width: "15%", minWidth: 400 }}>
         <Pagination
           isPrevDisabled={!data?.previous}
           isNextDisabled={!data?.next}
@@ -97,7 +132,7 @@ const DataPage = <T extends IndividualBase>({
           page={page}
         />
       </Box>
-    </>
+    </Box>
   );
 };
 

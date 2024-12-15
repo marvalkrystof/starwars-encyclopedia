@@ -1,17 +1,33 @@
 import { TextField } from "@mui/material";
+import { useThemeContext } from "../providers/ThemeContextProvider";
 
-interface SearchbarProps {
-  value: string;
+interface Props {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Searchbar: React.FC<SearchbarProps> = ({ onChange }) => {
+const Searchbar: React.FC<Props> = ({ onChange }: Props) => {
+  const { theme } = useThemeContext();
   return (
     <TextField
-      sx={{ marginTop: 2 }}
+      sx={{
+        width: "100%",
+        "& .MuiOutlinedInput-root": {
+          "&:not(.Mui-focused) .MuiOutlinedInput-notchedOutline": {
+            borderColor: "divider",
+          },
+
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            transition: theme.transitions.create([
+              "border-color",
+              "box-shadow",
+            ]),
+            boxShadow: `0px 10px 20px ${theme.palette.primary.main}`,
+          },
+        },
+      }}
       label="Search"
       variant="outlined"
-      onChange={onChange} // Update state on input change
+      onChange={onChange}
     />
   );
 };

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import { Button, Box, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useThemeContext } from "../providers/ThemeContextProvider";
 
 interface Props {
   isPrevDisabled: boolean;
@@ -18,15 +18,22 @@ function Pagination({
   isPrevDisabled,
   page,
 }: Props) {
+  const { theme } = useThemeContext();
   return (
     <Box
-      marginBlock={2}
       display="flex"
-      justifyContent="center"
+      justifyContent="space-between"
       alignItems="center"
       gap={2}
+      sx={{
+        borderRadius: 3,
+        paddingBlock: 3,
+        paddingInline: 3,
+        boxShadow: `0px 7px 17px ${theme.palette.primary.main}`,
+      }}
     >
       <Button
+        sx={{ flex: 1 }}
         variant="outlined"
         startIcon={<ArrowBackIcon />}
         onClick={handlePrevPage}
@@ -34,8 +41,11 @@ function Pagination({
       >
         Previous
       </Button>
-      <Typography variant="h6">{page}</Typography>
+      <Typography sx={{ flex: 1, textAlign: "center" }} variant="h6">
+        {page}
+      </Typography>
       <Button
+        sx={{ flex: 1 }}
         variant="outlined"
         endIcon={<ArrowForwardIcon />}
         onClick={handleNextPage}

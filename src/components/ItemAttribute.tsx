@@ -12,9 +12,11 @@ const ItemAttribute: React.FC<Props> = ({ label, data, icon }: Props) => {
     <ListItem
       sx={{
         pl: 4,
-        display: "flex", // Flexbox for row layout
-        alignItems: "center", // Align texts vertically
-        gap: 0.5, // Minimal gap between items
+        display: "flex",
+        alignItems: "center",
+        gap: 0.5,
+        borderBottom: "1px solid",
+        borderColor: "divider",
       }}
     >
       {icon && <Icon component={icon} fontSize="medium" />}
