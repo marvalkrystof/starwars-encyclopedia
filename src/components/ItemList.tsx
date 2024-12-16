@@ -43,8 +43,32 @@ const ItemList = <T extends IndividualBase>({
 
   return (
     <>
-      <ListItemButton onClick={handleClick}>
-        {icon && <Icon component={icon} fontSize="medium" />}
+      <ListItemButton
+        onClick={handleClick}
+        sx={{
+          "&:hover .bounce-icon": {
+            animation: "bounce 0.6s infinite",
+          },
+          "@keyframes bounce": {
+            "0%, 100%": {
+              transform: "translateY(0)",
+            },
+            "50%": {
+              transform: "translateY(-4px)",
+            },
+          },
+        }}
+      >
+        {icon && (
+          <Icon
+            className="bounce-icon"
+            sx={{
+              transition: "transform 0.3s ease",
+            }}
+            component={icon}
+            fontSize="medium"
+          />
+        )}
         <Typography sx={{ fontWeight: 900, fontSize: 20 }}>{label}</Typography>
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>

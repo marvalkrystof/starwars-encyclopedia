@@ -30,7 +30,7 @@ const DataCard: React.FC<Props> = ({ label, children }: Props) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "30vh",
+        height: "35vh",
         borderRadius: 3,
         ":hover": {
           boxShadow: `0px 7px 17px ${theme.palette.primary.main}`,

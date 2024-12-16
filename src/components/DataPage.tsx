@@ -3,18 +3,21 @@ import { useFetch } from "../hooks/UseFetch";
 import { ApiResponse, IndividualBase } from "../types/types";
 import ItemAttribute from "./ItemAttribute";
 import Pagination from "./Pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getEndpointFromUrl } from "../utils/apiUtils";
 import Searchbar from "./Searchbar";
+import TextCard from "./TextCard";
 
 interface Props<T> {
   endpoint: string;
   renderItem: (item: T) => JSX.Element;
+  id: string | undefined;
 }
 
 const DataPage = <T extends IndividualBase>({
   endpoint,
   renderItem,
+  id,
 }: Props<T>) => {
   const [localEndpoint, setLocalEndpoint] = useState<string>(endpoint);
 
@@ -44,6 +47,13 @@ const DataPage = <T extends IndividualBase>({
       setPage(page - 1);
     }
   };
+
+  useEffect(() => {
+    if (id) {
+      setLocalEndpoint(`${endpoint}/?search=${id}`);
+    }
+  }, []);
+
   return (
     <Box
       sx={{
@@ -59,7 +69,7 @@ const DataPage = <T extends IndividualBase>({
       }}
     >
       <Box sx={{ width: "20%", minWidth: 400 }}>
-        <Searchbar onChange={handleSearchChange}></Searchbar>
+        <Searchbar onChange={handleSearchChange} defaultValue={id}></Searchbar>
       </Box>
       <Box
         sx={{
@@ -102,9 +112,11 @@ const DataPage = <T extends IndividualBase>({
               alignItems: "center",
             }}
           >
-            <Typography variant="h3">
-              Error occurred while fetching data.
-            </Typography>
+            <TextCard>
+              <Typography variant="h3">
+                Error occurred while fetching data.
+              </Typography>
+            </TextCard>
           </Box>
         )}
         {Array.isArray(data?.results) && data?.results.length === 0 ? (
