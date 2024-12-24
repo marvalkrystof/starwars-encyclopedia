@@ -15,7 +15,7 @@ export const useFetch = <T,>({
   enabled = true,
 }: UseFetchParams) => {
   const { data, isLoading, error } = useQuery<T, Error>({
-    queryKey: [endpoint, method, body], // Unique key for caching/fetching
+    queryKey: [endpoint, method, body],
     queryFn: async () => {
       const response = await apiClient({
         url: endpoint,

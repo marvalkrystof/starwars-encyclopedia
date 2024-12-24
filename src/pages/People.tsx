@@ -31,7 +31,7 @@ const People = () => {
         <title>People - SW Encyclopedia</title>
       </Helmet>
       <DataPage
-        id={id}
+        search_id={id}
         endpoint="/people"
         renderItem={(person: Person) => (
           <DataCard key={person.url} label={person.name}>
@@ -44,7 +44,7 @@ const People = () => {
               label="Homeworld:"
               renderItemAttribute={(homeworld: Planet, label: string) => (
                 <LinkItemAttribute
-                  link={"/planets/" + homeworld.name}
+                  link={"/planets/" + encodeURIComponent(homeworld.name)}
                   key={homeworld.url}
                   label={label}
                   data={homeworld.name}
@@ -62,7 +62,7 @@ const People = () => {
               label="Films"
               renderItem={(film: Film) => (
                 <LinkItemAttribute
-                  link={"/films/" + film.title}
+                  link={"/films/" + encodeURIComponent(film.title)}
                   key={film.url}
                   data={film.title}
                 ></LinkItemAttribute>
@@ -73,7 +73,11 @@ const People = () => {
               icon={RocketLaunch}
               label="Starships"
               renderItem={(starship: Starship) => (
-                <ItemAttribute key={starship.url} data={starship.name} />
+                <LinkItemAttribute
+                  link={"/starships/" + encodeURIComponent(starship.name)}
+                  key={starship.url}
+                  data={starship.name}
+                ></LinkItemAttribute>
               )}
             />
             <ItemList
@@ -81,7 +85,11 @@ const People = () => {
               icon={Adb}
               label="Species"
               renderItem={(species: Species) => (
-                <ItemAttribute key={species.url} data={species.name} />
+                <LinkItemAttribute
+                  link={"/species/" + encodeURIComponent(species.name)}
+                  key={species.url}
+                  data={species.name}
+                ></LinkItemAttribute>
               )}
             />
             <ItemList
@@ -89,7 +97,11 @@ const People = () => {
               icon={Commute}
               label="Vehicles"
               renderItem={(vehicle: Vehicle) => (
-                <ItemAttribute key={vehicle.url} data={vehicle.name} />
+                <LinkItemAttribute
+                  link={"/vehicles/" + encodeURIComponent(vehicle.name)}
+                  key={vehicle.url}
+                  data={vehicle.name}
+                ></LinkItemAttribute>
               )}
             />
           </DataCard>

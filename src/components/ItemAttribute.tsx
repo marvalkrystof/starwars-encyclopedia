@@ -4,7 +4,7 @@ import { SvgIconComponent } from "@mui/icons-material";
 type Props = {
   label?: string;
   icon?: SvgIconComponent;
-  data: string;
+  data: string | number;
   iconAfter?: SvgIconComponent;
 };
 

@@ -1,7 +1,6 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
 import { useFetch } from "../hooks/UseFetch";
 import { ApiResponse, IndividualBase } from "../types/types";
-import ItemAttribute from "./ItemAttribute";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
 import { getEndpointFromUrl } from "../utils/apiUtils";
@@ -11,19 +10,21 @@ import TextCard from "./TextCard";
 interface Props<T> {
   endpoint: string;
   renderItem: (item: T) => JSX.Element;
-  id: string | undefined;
+  search_id: string | undefined;
 }
 
 const DataPage = <T extends IndividualBase>({
   endpoint,
   renderItem,
-  id,
+  search_id,
 }: Props<T>) => {
   const [localEndpoint, setLocalEndpoint] = useState<string>(endpoint);
 
   const { data, loading, error } = useFetch<ApiResponse<T>>({
     endpoint: localEndpoint,
   });
+
+  const decoded_search_id = decodeURIComponent(search_id || "");
 
   const [page, setPage] = useState<number>(1);
 
@@ -47,13 +48,11 @@ const DataPage = <T extends IndividualBase>({
       setPage(page - 1);
     }
   };
-
   useEffect(() => {
-    if (id) {
-      setLocalEndpoint(`${endpoint}/?search=${id}`);
+    if (search_id) {
+      setLocalEndpoint(`${endpoint}/?search=${decoded_search_id}`);
     }
   }, []);
-
   return (
     <Box
       sx={{
@@ -69,7 +68,10 @@ const DataPage = <T extends IndividualBase>({
       }}
     >
       <Box sx={{ width: "20%", minWidth: 400 }}>
-        <Searchbar onChange={handleSearchChange} defaultValue={id}></Searchbar>
+        <Searchbar
+          onChange={handleSearchChange}
+          defaultValue={decoded_search_id}
+        ></Searchbar>
       </Box>
       <Box
         sx={{
