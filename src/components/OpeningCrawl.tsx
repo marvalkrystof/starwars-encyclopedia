@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+import { useEffect } from "react";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import CloseIcon from "@mui/icons-material/Close";
 
-// Styled component for the crawl container
 const CrawlContainer = styled(Box)(({ theme }) => ({
   position: "fixed",
   top: 0,
@@ -24,10 +22,9 @@ const CrawlText = styled(Typography)(({ theme }) => ({
   fontFamily: '"Pathway Gothic One", sans-serif',
   fontSize: "6rem",
   textAlign: "center",
-  whiteSpace: "pre-line", // Preserve original text formatting
+  whiteSpace: "pre-line",
   width: "200%",
   position: "absolute",
-  transform: "rotateX(45deg) translateY(50%) translateZ(1500px)", // Added translateZ for Z-axis adjustment
   transformOrigin: "center bottom",
   animation: "crawl 60s linear",
   animationFillMode: "forwards",
@@ -36,22 +33,21 @@ const CrawlText = styled(Typography)(({ theme }) => ({
     "0%": {
       top: "60%",
       opacity: 1,
-      transform: "rotateX(45deg) translateY(50%) translateZ(1500px)", // Start closer on Z-axis
+      transform: "rotateX(45deg) translateY(40%) translateZ(1700px)",
     },
     "100%": {
       top: "-180%",
-      opacity: 0,
-      transform: "rotateX(45deg) translateY(-100%) translateZ(1300px)", // Move farther back
+      opacity: 0.2,
+      transform: "rotateX(45deg) translateY(-100%) translateZ(1500px)",
     },
   },
 }));
 
-// Styled component for the episode label
 const EpisodeLabel = styled(Typography)(({ theme }) => ({
-  color: "#FFC107", // Star Wars-like yellow
+  color: "#FFC107",
   fontFamily: '"Pathway Gothic One", sans-serif',
-  wordSpacing: "0.5em", // Adjusted word spacing
-  fontSize: "9rem", // Increased font size
+  wordSpacing: "0.5em",
+  fontSize: "9rem",
   fontWeight: "bold",
   textTransform: "uppercase",
   textAlign: "center",
@@ -59,18 +55,9 @@ const EpisodeLabel = styled(Typography)(({ theme }) => ({
   width: "100%",
 }));
 
-// Styled close button
-const CloseButton = styled(IconButton)(({ theme }) => ({
-  position: "absolute",
-  top: theme.spacing(2),
-  right: theme.spacing(2),
-  color: "white",
-  zIndex: 1001,
-}));
-
 interface Props {
   text: string;
-  onClose?: () => void;
+  onClose: () => void;
   episode_name: string;
   episode_number: string;
   duration: number;
@@ -79,36 +66,20 @@ interface Props {
 const OpeningCrawl = ({
   text,
   episode_name,
-  episode_number,
   onClose,
+  episode_number,
   duration = 15,
 }: Props) => {
-  const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleClose();
+      onClose();
     }, duration * 1000);
 
     return () => clearTimeout(timer);
-  }, [duration]);
-
-  const handleClose = () => {
-    setIsVisible(false);
-    if (onClose) {
-      onClose();
-    }
-  };
-
-  if (!isVisible) {
-    return null;
-  }
+  }, []);
 
   return (
     <CrawlContainer>
-      <CloseButton aria-label="close" onClick={handleClose} size="large">
-        <CloseIcon fontSize="large" />
-      </CloseButton>
       <CrawlText variant="body1">
         <Box display="flex" flexDirection="column" alignItems="center">
           <Box sx={{ width: "50%" }}>

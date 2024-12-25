@@ -1,7 +1,7 @@
 import { IndividualBase } from "../types/types";
 import { useFetch } from "../hooks/UseFetch";
 import ItemAttribute from "./ItemAttribute";
-import { getEndpointFromUrl } from "../utils/apiUtils";
+import { getEndpointFromUrl } from "../utils/utils";
 
 interface Props<T> {
   dataUrl: string | null;

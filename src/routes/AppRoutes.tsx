@@ -7,7 +7,7 @@ import Planets from "../pages/Planets";
 import Species from "../pages/Species";
 import Vehicles from "../pages/Vehicles";
 import Starships from "../pages/Starships";
-import Test from "../pages/Test";
+import CrawlPage from "../pages/CrawlPage";
 
 const AppRoutes = () => {
   return (
@@ -25,7 +25,7 @@ const AppRoutes = () => {
       <Route path="/vehicles/:id" element={<Vehicles />} />
       <Route path="/starships" element={<Starships />} />
       <Route path="/starships/:id" element={<Starships />} />
-      <Route path="/test" element={<Test />} />
+      <Route path="/crawl/:id" element={<CrawlPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

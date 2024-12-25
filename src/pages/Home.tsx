@@ -1,7 +1,7 @@
-import { Box, Card, Link, Typography } from "@mui/material";
-import { useThemeContext } from "../providers/ThemeContextProvider";
+import { Box, Button, Typography, Link as MUILink } from "@mui/material";
 import TextCard from "../components/TextCard";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -21,11 +21,11 @@ const Home = () => {
           <Typography variant="h1">
             Welcome to the STARWARS Encyclopedia!
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ marginTop: 1 }}>
             {"This page is built on top of "}
-            <Link color="primary.main" href="https://swapi.dev/">
-              swapi.dev
-            </Link>
+            <MUILink color="primary.main" href="https://swapi.py4e.com/">
+              swapi
+            </MUILink>
             {" using React, Typescript, and MaterialUI."}
           </Typography>
           <Typography variant="body1">

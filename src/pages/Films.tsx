@@ -21,6 +21,7 @@ import {
 import { useParams } from "react-router-dom";
 import LinkItemAttribute from "../components/LinkItemAttribute";
 import { Helmet } from "react-helmet";
+import { integerToRoman } from "../utils/utils";
 
 const Films = () => {
   const { id } = useParams<{ id: string }>();
@@ -36,7 +37,17 @@ const Films = () => {
         renderItem={(film: Film) => (
           <DataCard key={film.url} label={film.title}>
             <ItemAttribute icon={Theaters} data={film.title} />
-            <ItemAttribute label="Episode:" data={film.episode_id} />
+
+            <ItemAttribute
+              label="Episode:"
+              data={integerToRoman(film.episode_id)}
+            />
+            <LinkItemAttribute
+              key={"/crawl/" + film.episode_id}
+              data="Opening Crawl"
+              link={"/crawl/" + film.episode_id}
+              openNewTab={true}
+            />
             <ItemAttribute label="Director:" data={film.director} />
             <ItemAttribute label="Producer:" data={film.producer} />
             <ItemAttribute label="Release Date:" data={film.release_date} />

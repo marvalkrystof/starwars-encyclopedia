@@ -7,11 +7,17 @@ interface Props {
   key: string;
   label?: string;
   data: string;
+  openNewTab?: boolean;
 }
 
-const LinkItemAttribute = ({ link, key, label, data }: Props) => {
+const LinkItemAttribute = ({ link, key, label, data, openNewTab }: Props) => {
   return (
-    <Link to={link} style={{ textDecoration: "none", color: "inherit" }}>
+    <Link
+      to={link}
+      target={openNewTab ? "_blank" : "_self"}
+      rel={openNewTab ? "noopener noreferrer" : ""}
+      style={{ textDecoration: "none", color: "inherit" }}
+    >
       <ItemAttribute
         key={key}
         label={label}

@@ -11,7 +11,7 @@ import {
 import { ExpandLess, ExpandMore, SvgIconComponent } from "@mui/icons-material";
 import ItemAttribute from "./ItemAttribute";
 import { IndividualBase } from "../types/types";
-import { getEndpointFromUrl } from "../utils/apiUtils";
+import { getEndpointFromUrl } from "../utils/utils";
 
 type Props<T> = {
   dataUrls: string[];

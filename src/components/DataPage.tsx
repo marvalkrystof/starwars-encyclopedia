@@ -3,7 +3,7 @@ import { useFetch } from "../hooks/UseFetch";
 import { ApiResponse, IndividualBase } from "../types/types";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
-import { getEndpointFromUrl } from "../utils/apiUtils";
+import { getEndpointFromUrl } from "../utils/utils";
 import Searchbar from "./Searchbar";
 import TextCard from "./TextCard";
 
@@ -85,6 +85,7 @@ const DataPage = <T extends IndividualBase>({
             sm: "repeat(1, 1fr)",
             md: "repeat(3, 1fr)",
             lg: "repeat(5, 1fr)",
+            xl: "repeat(5, 1fr)",
           },
         }}
         component="div"
