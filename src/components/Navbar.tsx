@@ -7,7 +7,6 @@ import { useThemeContext } from "../providers/ThemeContextProvider";
 import { useLocation } from "react-router-dom";
 import Hamburger from "./Hamburger";
 import { useDeviceContext } from "../providers/DeviceContextProvider";
-import { basename } from "../App";
 
 const Navbar: React.FC = () => {
   const { theme } = useThemeContext();
@@ -17,12 +16,12 @@ const Navbar: React.FC = () => {
   const { isMobile } = useDeviceContext();
 
   const navLinks = [
-    { href: basename + "/people", label: "People" },
-    { href: basename + "/films", label: "Films" },
-    { href: basename + "/planets", label: "Planets" },
-    { href: basename + "/species", label: "Species" },
-    { href: basename + "/starships", label: "Starships" },
-    { href: basename + "/vehicles", label: "Vehicles" },
+    { href: "/people", label: "People" },
+    { href: "/films", label: "Films" },
+    { href: "/planets", label: "Planets" },
+    { href: "/species", label: "Species" },
+    { href: "/starships", label: "Starships" },
+    { href: "/vehicles", label: "Vehicles" },
   ];
 
   const renderDesktopNavbar = () => (

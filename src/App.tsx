@@ -7,14 +7,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useThemeContext } from "./providers/ThemeContextProvider";
 import { HelmetProvider } from "react-helmet-async";
 
-export const basename = "/starwars-encyclopedia";
-
 function App() {
   const queryClient = new QueryClient();
   const { theme } = useThemeContext();
 
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <HelmetProvider>
