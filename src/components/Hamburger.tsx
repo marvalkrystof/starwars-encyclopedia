@@ -2,7 +2,7 @@ import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Box, ButtonBase } from "@mui/material";
+import { Box } from "@mui/material";
 
 interface Props {
   children: JSX.Element[];

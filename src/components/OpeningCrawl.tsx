@@ -17,7 +17,7 @@ const CrawlContainer = styled(Box)(({ theme }) => ({
   zIndex: 1000,
 }));
 
-const CrawlText = styled(Typography)(({ theme }) => ({
+const CrawlText = styled(Typography)(() => ({
   color: "#FFC107",
   fontFamily: '"Pathway Gothic One", sans-serif',
   fontSize: "6rem",
@@ -43,7 +43,7 @@ const CrawlText = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const EpisodeLabel = styled(Typography)(({ theme }) => ({
+const EpisodeLabel = styled(Typography)(() => ({
   color: "#FFC107",
   fontFamily: '"Pathway Gothic One", sans-serif',
   wordSpacing: "0.5em",

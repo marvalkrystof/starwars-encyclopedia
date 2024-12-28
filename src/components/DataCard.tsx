@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardContent, List, Typography, useTheme } from "@mui/material";
+import { Card, CardContent, List, Typography } from "@mui/material";
 import { useThemeContext } from "../providers/ThemeContextProvider";
 import { useDeviceContext } from "../providers/DeviceContextProvider";
 import { Link } from "react-router-dom";

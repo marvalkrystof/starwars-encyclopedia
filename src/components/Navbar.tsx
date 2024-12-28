@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AppBar, Box, Toolbar, useMediaQuery } from "@mui/material";
+import React from "react";
+import { AppBar, Box, Toolbar } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import ModeSwitch from "./ModeSwitch";

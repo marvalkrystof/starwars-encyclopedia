@@ -1,4 +1,5 @@
 import { TypographyOptions } from "@mui/material/styles/createTypography";
+//@ts-ignore
 import "@fontsource/oswald";
 
 export const typography: TypographyOptions = {
