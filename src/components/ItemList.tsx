@@ -5,7 +5,6 @@ import {
   Icon,
   List,
   ListItemButton,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import { ExpandLess, ExpandMore, SvgIconComponent } from "@mui/icons-material";
@@ -46,6 +45,7 @@ const ItemList = <T extends IndividualBase>({
       <ListItemButton
         onClick={handleClick}
         sx={{
+          height: "4rem",
           "&:hover .bounce-icon": {
             animation: "bounce 0.6s infinite",
           },

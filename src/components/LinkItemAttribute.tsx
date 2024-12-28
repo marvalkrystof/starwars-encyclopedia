@@ -4,26 +4,25 @@ import ItemAttribute from "./ItemAttribute";
 
 interface Props {
   link: string;
-  key: string;
   label?: string;
   data: string;
   openNewTab?: boolean;
 }
 
-const LinkItemAttribute = ({ link, key, label, data, openNewTab }: Props) => {
+const LinkItemAttribute = ({ link, label, data, openNewTab }: Props) => {
   return (
     <Link
       to={link}
       target={openNewTab ? "_blank" : "_self"}
       rel={openNewTab ? "noopener noreferrer" : ""}
-      style={{ textDecoration: "none", color: "inherit" }}
+      style={{
+        display: "flex",
+        flexGrow: 1,
+        textDecoration: "none",
+        color: "inherit",
+      }}
     >
-      <ItemAttribute
-        key={key}
-        label={label}
-        data={data}
-        iconAfter={ArrowOutwardIcon}
-      />
+      <ItemAttribute label={label} data={data} iconAfter={ArrowOutwardIcon} />
     </Link>
   );
 };

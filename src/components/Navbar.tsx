@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
   const renderMobileNavbar = () => (
     <Toolbar
       sx={{
-        height: "4rem",
+        height: "5rem",
         borderBottom: 2,
         borderBottomLeftRadius: 1,
         borderBottomRightRadius: 1,
@@ -98,12 +98,13 @@ const Navbar: React.FC = () => {
       <Hamburger>
         {[
           <Box
+            key="enclosing-box"
             sx={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: "primary.main",
-              height: "4rem",
+              height: "5rem",
               borderBottom: 2,
               borderColor: "white",
               borderBottomLeftRadius: 1,
@@ -114,7 +115,7 @@ const Navbar: React.FC = () => {
             <Typography
               key="title"
               href="/"
-              variant="h5"
+              variant="h4"
               component="a"
               sx={{
                 textDecoration: "none",
@@ -134,13 +135,17 @@ const Navbar: React.FC = () => {
               key={link.href}
               href={link.href}
               fullWidth
+              sx={{ paddingBlock: 2, fontSize: "1.2rem" }}
               color={isActive(link.href) ? "secondary" : "inherit"}
               variant={isActive(link.href) ? "contained" : "text"}
             >
               {link.label}
             </Button>
           )),
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            key="mode-switch"
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <ModeSwitch />
           </Box>,
         ]}
@@ -150,8 +155,9 @@ const Navbar: React.FC = () => {
 
   return (
     <AppBar
-      position="static"
       sx={{
+        position: "sticky",
+        top: 0,
         backgroundColor: "primary.main",
         minHeight: "5vh",
         display: "flex",

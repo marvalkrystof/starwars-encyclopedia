@@ -18,7 +18,7 @@ export default function Hamburger({ children }: Props) {
   return (
     <Box>
       <Button
-        sx={{ backgroundColor: "primary.main" }}
+        sx={{ backgroundColor: "primary.main", fontSize: "1.2rem" }}
         variant="contained"
         color="inherit"
         startIcon={<MenuIcon />}

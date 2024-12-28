@@ -5,7 +5,7 @@ import { ApiResponse, Film } from "../types/types";
 import { integerToRoman } from "../utils/utils";
 import { Navigate } from "react-router-dom";
 import { Box, CircularProgress } from "@mui/material";
-
+import { Helmet } from "react-helmet-async";
 const CrawlPage = () => {
   const { id } = useParams<{ id: string }>();
   const { data, loading, error } = useFetch<ApiResponse<Film>>({
@@ -42,13 +42,18 @@ const CrawlPage = () => {
 
   if (filteredEpisode) {
     return (
-      <OpeningCrawl
-        episode_name={filteredEpisode.title}
-        text={filteredEpisode.opening_crawl}
-        episode_number={integerToRoman(filteredEpisode.episode_id)}
-        onClose={() => window.close()}
-        duration={45}
-      />
+      <>
+        <Helmet>
+          <title>Episode {id} crawl - SW Encyclopedia</title>
+        </Helmet>
+        <OpeningCrawl
+          episode_name={filteredEpisode.title}
+          text={filteredEpisode.opening_crawl}
+          episode_number={integerToRoman(filteredEpisode.episode_id)}
+          onClose={() => window.close()}
+          duration={40}
+        />
+      </>
     );
   }
 

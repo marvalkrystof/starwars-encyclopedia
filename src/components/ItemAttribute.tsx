@@ -6,6 +6,7 @@ type Props = {
   icon?: SvgIconComponent;
   data: string | number;
   iconAfter?: SvgIconComponent;
+  title?: boolean;
 };
 
 const ItemAttribute: React.FC<Props> = ({
@@ -13,10 +14,12 @@ const ItemAttribute: React.FC<Props> = ({
   data,
   icon,
   iconAfter,
+  title,
 }: Props) => {
   return (
     <ListItem
       sx={{
+        flexGrow: title ? 2 : 1,
         pl: 4,
         display: "flex",
         alignItems: "center",
@@ -40,7 +43,7 @@ const ItemAttribute: React.FC<Props> = ({
         <Icon
           className="bounce-icon"
           component={icon}
-          fontSize="medium"
+          fontSize={title ? "large" : "medium"}
           sx={{
             transition: "transform 0.3s ease",
           }}
@@ -49,7 +52,7 @@ const ItemAttribute: React.FC<Props> = ({
       {label && (
         <Typography sx={{ fontWeight: 900, fontSize: 20 }}>{label}</Typography>
       )}
-      <Typography sx={{ fontSize: 20 }}>{data}</Typography>
+      <Typography sx={{ fontSize: title ? 26 : 20 }}>{data}</Typography>
       {iconAfter && (
         <Icon
           className="bounce-icon"

@@ -1,9 +1,7 @@
-import { Box, Button, Typography, Link as MUILink } from "@mui/material";
+import { Box, Typography, Link as MUILink } from "@mui/material";
 import TextCard from "../components/TextCard";
-import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
-
-const Home = () => {
+import { Helmet } from "react-helmet-async";
+const HomePage = () => {
   return (
     <>
       <Helmet>
@@ -21,14 +19,14 @@ const Home = () => {
           <Typography variant="h1">
             Welcome to the STARWARS Encyclopedia!
           </Typography>
-          <Typography variant="body1" sx={{ marginTop: 1 }}>
+          <Typography variant="h6" sx={{ marginTop: 1 }}>
             {"This page is built on top of "}
             <MUILink color="primary.main" href="https://swapi.py4e.com/">
               swapi
             </MUILink>
             {" using React, Typescript, and MaterialUI."}
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="h6">
             Disclaimer: If error occurs while fetching data, please check the
             API status, as that's the most likely cause.
           </Typography>
@@ -38,4 +36,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

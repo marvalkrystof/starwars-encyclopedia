@@ -67,7 +67,16 @@ const DataPage = <T extends IndividualBase>({
         rowGap: 5,
       }}
     >
-      <Box sx={{ width: "20%", minWidth: 400 }}>
+      <Box
+        sx={{
+          width: {
+            xs: "90%",
+            sm: "70%",
+            md: "50%",
+            lg: "30%",
+          },
+        }}
+      >
         <Searchbar
           onChange={handleSearchChange}
           defaultValue={decoded_search_id}
@@ -76,9 +85,12 @@ const DataPage = <T extends IndividualBase>({
       <Box
         sx={{
           display: "grid",
-          columnGap: 3,
           rowGap: 1,
-          minHeight: "70vh",
+          columnGap: {
+            sm: 5,
+            md: 1,
+          },
+          minHeight: { md: "70vh" },
           width: "100%",
           bgcolor: "background.default",
           gridTemplateColumns: {
@@ -138,7 +150,16 @@ const DataPage = <T extends IndividualBase>({
           data?.results.map((item) => (item ? renderItem(item) : null))
         )}
       </Box>
-      <Box sx={{ width: "15%", minWidth: 400 }}>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            sm: "70%",
+            md: "50%",
+            lg: "25%",
+          },
+        }}
+      >
         <Pagination
           isPrevDisabled={!data?.previous}
           isNextDisabled={!data?.next}

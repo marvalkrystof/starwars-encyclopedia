@@ -38,7 +38,7 @@ const CrawlText = styled(Typography)(({ theme }) => ({
     "100%": {
       top: "-180%",
       opacity: 0.2,
-      transform: "rotateX(45deg) translateY(-100%) translateZ(1500px)",
+      transform: "rotateX(45deg) translateY(-100%) translateZ(1000px)",
     },
   },
 }));

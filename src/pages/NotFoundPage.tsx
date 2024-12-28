@@ -1,8 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import TextCard from "../components/TextCard";
-import { Helmet } from "react-helmet";
-
-export default function NotFound() {
+import { Helmet } from "react-helmet-async";
+export default function NotFoundPage() {
   return (
     <>
       <Helmet>

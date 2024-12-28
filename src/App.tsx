@@ -5,6 +5,7 @@ import "./index.css";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useThemeContext } from "./providers/ThemeContextProvider";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   const queryClient = new QueryClient();
@@ -14,9 +15,11 @@ function App() {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          <CssBaseline enableColorScheme />
-          <Navbar />
-          <AppRoutes />
+          <HelmetProvider>
+            <CssBaseline enableColorScheme />
+            <Navbar />
+            <AppRoutes />
+          </HelmetProvider>
         </ThemeProvider>
       </QueryClientProvider>
     </BrowserRouter>

@@ -1,32 +1,52 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import People from "../pages/People";
-import NotFound from "../pages/NotFound";
-import Films from "../pages/Films";
-import Planets from "../pages/Planets";
-import Species from "../pages/Species";
-import Vehicles from "../pages/Vehicles";
-import Starships from "../pages/Starships";
+import HomePage from "../pages/HomePage";
+import PeoplePage from "../pages/PeoplePage";
+import NotFoundPage from "../pages/NotFoundPage";
+import FilmsPage from "../pages/FilmsPage";
+import PlanetsPage from "../pages/PlanetsPage";
+import SpeciesPage from "../pages/SpeciesPage";
+import VehiclesPage from "../pages/VehiclesPage";
+import StarshipsPage from "../pages/StarshipsPage";
 import CrawlPage from "../pages/CrawlPage";
+import FilmPage from "../pages/FilmPage";
+import SpeciePage from "../pages/SpeciePage";
+import StarshipPage from "../pages/StarshipPage";
+import VehiclePage from "../pages/VehiclePage";
+import PersonPage from "../pages/PersonPage";
+import PlanetPage from "../pages/PlanetPage";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/people" element={<People />} />
-      <Route path="/people/:id" element={<People />} />
-      <Route path="/films" element={<Films />} />
-      <Route path="/films/:id" element={<Films />} />
-      <Route path="/planets" element={<Planets />} />
-      <Route path="/planets/:id" element={<Planets />} />
-      <Route path="/species" element={<Species />} />
-      <Route path="/species/:id" element={<Species />} />
-      <Route path="/vehicles" element={<Vehicles />} />
-      <Route path="/vehicles/:id" element={<Vehicles />} />
-      <Route path="/starships" element={<Starships />} />
-      <Route path="/starships/:id" element={<Starships />} />
+      <Route path="*" element={<NotFoundPage />} />
+
+      <Route path="/" element={<HomePage />} />
+
+      <Route path="/people" element={<PeoplePage />} />
+      <Route path="/people/search/:search_id" element={<PeoplePage />} />
+      <Route path="/people/:id" element={<PersonPage />} />
+
+      <Route path="/films" element={<FilmsPage />} />
+      <Route path="/films/search/:search_id" element={<FilmsPage />} />
+      <Route path="/films/:id" element={<FilmPage />} />
+
+      <Route path="/planets" element={<PlanetsPage />} />
+      <Route path="/planets/search/:search_id" element={<PlanetsPage />} />
+      <Route path="/planets/:id" element={<PlanetPage />} />
+
+      <Route path="/species" element={<SpeciesPage />} />
+      <Route path="/species/search/:search_id" element={<SpeciesPage />} />
+      <Route path="/species/:id" element={<SpeciePage />} />
+
+      <Route path="/vehicles" element={<VehiclesPage />} />
+      <Route path="/vehicles/search/:search_id" element={<VehiclesPage />} />
+      <Route path="/vehicles/:id" element={<VehiclePage />} />
+
+      <Route path="/starships" element={<StarshipsPage />} />
+      <Route path="/starships/search/:search_id" element={<StarshipsPage />} />
+      <Route path="/starships/:id" element={<StarshipPage />} />
+
       <Route path="/crawl/:id" element={<CrawlPage />} />
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
