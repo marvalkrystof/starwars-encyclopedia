@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const CrawlContainer = styled(Box)(({ theme }) => ({
+const CrawlContainer = styled(Box)(() => ({
   position: "fixed",
   top: 0,
   left: 0,
